@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-landing-page-deployment
+  labels:
+    app: jenkins-landing-page
+spec:
+  selector:
+    matchLabels:
+      app: jenkins-landing-page
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: jenkins-landing-page
+    spec:
+      containers:
+      - name: jenkins-landing-page
+        image: gandi12/JK-LandingPage:$BUILD_NUMBER
+        ports:
+        - containerPort: 80
